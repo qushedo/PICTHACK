@@ -1,23 +1,18 @@
 package database
 
 import (
-	"backend/internal/entities"
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"log"
 	"os"
+	"tgBot/entities"
 	"time"
 )
 
-var DB *gorm.DB
-
-func Connect() {
-	dsn := fmt.Sprintf("user=%s password=%s dbname=%s host=database port=5432 sslmode=disable TimeZone=UTC",
-		os.Getenv("POSTGRES_USER"),
-		os.Getenv("POSTGRES_PASSWORD"),
-		os.Getenv("POSTGRES_DB"))
+func Connect() *gorm.DB {
+	dsn := fmt.Sprintf("user=%s password=%s dbname=%s host=database port=5432 sslmode=disable TimeZone=UTC", os.Getenv("POSTGRES_USER"), os.Getenv("POSTGRES_PASSWORD"), os.Getenv("POSTGRES_DB"))
 
 	newLogger := logger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags),
@@ -36,8 +31,13 @@ func Connect() {
 	} else {
 		log.Println("Успешно подключились к базе данных")
 	}
-	DB = database
+
 	err = database.AutoMigrate(
-		&entities.UserExample{},
+		&entities.User{},
 	)
+	if err != nil {
+		log.Panic(err)
+	}
+
+	return database
 }

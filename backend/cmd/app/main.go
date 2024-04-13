@@ -1,10 +1,10 @@
 package main
 
 import (
+	"backend/internal/database"
+	"backend/internal/routes"
 	"github.com/gofiber/fiber/v3"
 	"os"
-	"webTemplate/internal/database"
-	"webTemplate/internal/routes"
 )
 
 func main() {

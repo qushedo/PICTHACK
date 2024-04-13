@@ -1,0 +1,31 @@
+settings:
+  parse_mode: html
+  token_env: BOT_TOKEN
+  long_poller:
+    Timeout: 10
+
+config:
+
+commands:
+  /start: 🚀 Start the bot
+  /cancel: ❌ Cancel the last action
+
+
+buttons:
+  english:
+    unique: english
+    callback_data: en
+    text: 🇬🇧 English
+
+  russian:
+    unique: russian
+    callback_data: ru
+    text: 🇷🇺 Русский
+
+  openMenu: '{{.}}'
+
+markups:
+  pickLanguage:
+    - [ russian, english]
+  replyOpenMenu:
+    - [openMenu]
