@@ -1,0 +1,52 @@
+/* Стилизация контейнера для курсов */
+#courses-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Стилизация блока курса */
+  .course {
+    width: calc(33.33% - 20px); /* Ширина блока - треть ширины контейнера, с отступом 10px справа и слева */
+    margin: 10px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+  }
+  
+  /* Стилизация названия курса */
+  .course h3 {
+    margin-top: 0;
+  }
+  
+  /* Стилизация описания курса */
+  .course p {
+    margin-bottom: 10px;
+  }
+  
+  /* Стилизация ссылки на курс */
+  .course a {
+    text-decoration: none;
+    color: blue;
+  }
+  .menu-gen{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 400px;
+    padding-right: 400px;
+    
+  }
+  .menu{
+   display:flex;
+   flex-direction:row;
+   text-align: center;
+   justify-content: space-between;
+   
+  }
+  .rectangle {
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    color: black;
+  }
