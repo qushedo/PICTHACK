@@ -24,8 +24,16 @@ buttons:
 
   openMenu: '{{.}}'
 
+  subject:
+    unique: subject
+    callback_data: '{{.Data}}'
+    text: '{{.Text}}'
+    url: '{{.URL}}'
+
+
+
 markups:
   pickLanguage:
-    - [ russian, english]
+    - [russian, english]
   replyOpenMenu:
     - [openMenu]

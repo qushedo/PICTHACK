@@ -38,6 +38,6 @@ func Connect() {
 	}
 	DB = database
 	err = database.AutoMigrate(
-		&entities.UserExample{},
+		&entities.User{},
 	)
 }

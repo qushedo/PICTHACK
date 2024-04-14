@@ -9,6 +9,7 @@ import (
 
 func main() {
 	database.Connect()
+
 	port := os.Getenv("BACKEND_PORT")
 	app := fiber.New()
 	routes.Setup(app)

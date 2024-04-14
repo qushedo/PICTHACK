@@ -34,6 +34,7 @@ func Connect() *gorm.DB {
 
 	err = database.AutoMigrate(
 		&entities.User{},
+		&entities.Course{},
 	)
 	if err != nil {
 		log.Panic(err)

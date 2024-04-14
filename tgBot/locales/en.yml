@@ -3,3 +3,15 @@ start: |
   📊 To get started, use the buttons below
 
 openMenu: ⚙️ Menu
+
+university: |-
+  📝 Enter the name of your university
+
+faculty: |-
+  🎩 Enter the name of your faculty
+
+pickItems: |-
+  <<b>Choose subjects that you don't understand</b>
+
+unknownCmd: |-
+  <b>❗️ Unknown command</b>

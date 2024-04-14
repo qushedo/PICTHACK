@@ -7,12 +7,14 @@ import (
 	"gorm.io/gorm"
 	"tgBot/database"
 	"tgBot/entities"
+	"tgBot/states"
 )
 
 type Bot struct {
 	*tele.Bot
 	*layout.Layout
-	db *gorm.DB
+	db          *gorm.DB
+	inputStates *states.InputMap
 }
 
 func New(path string) (*Bot, error) {
@@ -35,9 +37,10 @@ func New(path string) (*Bot, error) {
 	db := database.Connect()
 
 	bot := &Bot{
-		Bot:    b,
-		Layout: lt,
-		db:     db,
+		Bot:         b,
+		Layout:      lt,
+		db:          db,
+		inputStates: states.MakeInputMap(),
 	}
 	return bot, nil
 }
@@ -56,6 +59,8 @@ func (b *Bot) Start() {
 		return user.Localisation
 	}))
 
+	b.Handle(tele.OnText, b.OnText)
+	b.Use(b.ItemsMiddle)
 	b.Handle("/start", b.onStart)
 
 	b.Bot.Start()

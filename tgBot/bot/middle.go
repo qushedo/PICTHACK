@@ -40,3 +40,15 @@ func (b *Bot) Localisation(next tele.HandlerFunc) tele.HandlerFunc {
 		return next(c)
 	}
 }
+
+func (b *Bot) ItemsMiddle(next tele.HandlerFunc) tele.HandlerFunc {
+	return func(c tele.Context) error {
+		var user entities.User
+		if b.db.Where("id = ?", c.Sender().ID).First(&user).Error == nil {
+			if user.Items == "" {
+				return b.selectUniversity(c)
+			}
+		}
+		return next(c)
+	}
+}
